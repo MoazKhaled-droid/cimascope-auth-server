@@ -4,11 +4,9 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
-// --- تعديل الـ CORS عشان يقبل الطلبات من الـ Frontend بتاعك ---
+// --- التعديل هنا: حطينا الدومين بتاعك صراحة عشان نفك عقدة الـ CORS ---
 app.use(cors({
-  origin: function (origin, callback) {
-    callback(null, true);
-  },
+  origin: 'https://cimascope-c9rw.vercel.app', 
   credentials: true 
 }));
 
@@ -46,7 +44,7 @@ app.post('/api/auth/login', (req, res) => {
   const tokenValue = `tmsa7-cookie-token-${user.id}-${Date.now()}`;
   activeTokens.add(tokenValue);
 
-  // التعديل هنا: خلينا secure بـ true و sameSite بـ none عشان يشتغلوا على دومينات مختلفة
+  // الكوكيز زي ما هي مظبوطة للأمان
   res.cookie('auth_token', tokenValue, {
     httpOnly: true,
     secure: true, 
@@ -100,7 +98,6 @@ app.post('/api/auth/logout', (req, res) => {
   res.json({ success: true, message: "Logged out successfully" });
 });
 
-// التعديل هنا: البورت بقى دايناميك من الاستضافة أو 5000 لو شغال لوكال
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Auth Server is running smoothly on port ${PORT}`);
