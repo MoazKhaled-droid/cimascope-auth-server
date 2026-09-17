@@ -7,7 +7,10 @@ const app = express();
 // CORS - React deployed on Vercel
 app.use(
   cors({
-    origin: "https://cimascope.vercel.app",
+    origin: [
+      "https://cimascope.vercel.app",
+      "https://quizappreactroject.vercel.app"
+    ],
     credentials: true,
   })
 );
@@ -116,4 +119,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Auth Server is running on port ${PORT}`);
 });
-
