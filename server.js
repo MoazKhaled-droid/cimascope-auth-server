@@ -9,7 +9,7 @@ app.use(
   cors({
     origin: [
       "https://cimascope.vercel.app",
-      "https://quizappreactroject.vercel.app"
+      "https://brain-wave-quiz-app.vercel.app"
     ],
     credentials: true,
   })
