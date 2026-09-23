@@ -8,7 +8,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://cimascope-xi.vercel.app",
+      "https://cimascope-psi.vercel.app",
       "https://brain-wave-quiz-app.vercel.app",
       "http://localhost:5173"
     ],
